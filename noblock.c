@@ -84,11 +84,12 @@ static int task_2_run()
     ,   TASK_2_WAIT_STATE
     } task_2_state = TASK_2_INIT_STATE;
 
-    static unsigned int task_2_bit = 0;
+    static unsigned int task_2_bit;
 
     switch (task_2_state) {
         case TASK_2_INIT_STATE:
             printf("%s: initializing task 2\n", __func__);
+            task_2_bit = 0;
             task_2_state = TASK_2_TOGGLE_STATE;
             break;
         case TASK_2_TOGGLE_STATE:
