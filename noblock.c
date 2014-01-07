@@ -26,14 +26,14 @@ static enum task_ids_e {
 ,   TASK_2_ID
 } task_id = TASK_1_ID;
 
-/* task_1_state: Keep track of state of task 1. */
+/* task_1_state: Keep track of the state of task 1. */
 static enum task_1_states_e {
     TASK_1_INIT_STATE
 ,   TASK_1_HELLO_STATE
 ,   TASK_1_WORLD_STATE
 } task_1_state = TASK_1_INIT_STATE;
 
-/* Each state task 1 state has a callback associated with it:
+/* Each state task 1 state has a callback function associated with it:
     'init', 'hello', and 'world' states. */
 static int task_1_init_state_callback()
 {
@@ -67,7 +67,7 @@ static int (*task_1_state_machine[])(void) = {
 /* task_1_run: a helper function. Simply run the task 1 callback
     function associated with its current state.
     Eg. if the current state of task 1 is the 'hello' state, call
-        the hello callback defined above. */
+        the hello callback implemented above. */
 static int task_1_run()
 {
     return task_1_state_machine[task_1_state]();
@@ -106,7 +106,7 @@ static int task_2_run()
     return 0;
 }
 
-/* tasks: an array of pointers to functions. Associated task ids with their
+/* tasks: an array of pointers to functions. Associates task IDs with their
     respective task 'run' functions. */
 static int (*tasks[])(void) = {
     [TASK_1_ID] = &task_1_run
